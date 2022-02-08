@@ -22,4 +22,4 @@ pnpm-debug.log*
 *.sln
 *.sw?
 *.stl
-src/assets/materials/*.stl
+# src/assets/materials/*.stl
