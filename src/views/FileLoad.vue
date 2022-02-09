@@ -1,51 +1,62 @@
 <template>
   <div class="contents">
-    <label v-show="!uploadedImage" class="input-item__label">STLファイルを選択
-      <input type="file" @change="uploadSTL" />
-    </label>
-    <div class="preview-item">
-      <img
-        v-show="uploadedImage"
-        class="preview-item-file"
-        :src="uploadedImage"
-        alt=""
-      />
-      <div v-show="uploadedImage" class="preview-item-btn" @click="remove">
-        <p class="preview-item-name">{{ img_name }}</p>
-        CLOSE
-      </div>
-    </div>
+    <!-- <form action="/generate" method="post" enctype="multipart/form-data" ref="form"> -->
+      <label v-on:removeImage="removeImage" v-show="!uploadedfile" class="input-item__label">STLファイルを選択
+        <input type="file" @change="uploadSTL" />
+      </label>
+    <!-- </form> -->
+    <!-- <PreviewImage :uploadedfile="this.uploadedfile" :imgName="this.imgName"></PreviewImage> -->
   </div>
 </template>
 
 <script>
-
+// import PreviewImage from "../components/PreviewImage"
 export default {
   data() {
     return {
-      uploadedImage: '',
-      img_name: '',
+      uploadedfile: '',
+      imgName: '',
+      objText: ''
     };
   },
+  components: { 
+    // eslint-disable 
+    // PreviewImage,
+    // eslint-disable
+    },
   methods: {
     uploadSTL(e) {
       const files = e.target.files || e.dataTransfer.files;
-      console.log(files);
       this.createImage(files[0]);
-      this.img_name = files[0].name;
+      this.imgName = files[0].name;
+      // アップロードファイル名
+      localStorage.setItem('name', file[0].name)
     },
     // アップロードした画像を表示
     createImage(file) {
       const reader = new FileReader();
       reader.onload = e => {
-        console.log(e.target.result);
-        this.uploadedImage = e.target.result;
+        const newObj = reader.result;
+        this.uploadedfile = e.target.result;
+        // ファイルのデータURI
+        localStorage.setItem('uri',  this.uploadedfile);
+        const newBlob = new Blob([newObj], {
+              type: "text/plan",
+        });
+        this.objText = URL.createObjectURL(newBlob);
+        // console.log(this.objText); 
       };
+      // ファイルを、Data URIとして読み込む
       reader.readAsDataURL(file);
+      // ファイル種別
+      localStorage.setItem('type', file.type);
+      
     },
-    remove() {
-      this.uploadedImage = false;
-    },
+    removeImage() {
+      console.log("start")
+      // false
+      this.uploadedfile = false;
+    }
   },
 };
 </script>
