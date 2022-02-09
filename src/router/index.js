@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import ThreeSample from '../views/ThreeSample.vue'
 import FileLoad from '../views/FileLoad'
+import STLCanvas from '../views/STLCanvas.vue'
 
 Vue.use(VueRouter)
 
@@ -29,6 +30,11 @@ const routes = [
     path: '/file',
     name: 'FileLoad',
     component: FileLoad
+  },
+  {
+    path: '/stl',
+    name: 'STLCanvas',
+    component: STLCanvas
   }
 ]
 

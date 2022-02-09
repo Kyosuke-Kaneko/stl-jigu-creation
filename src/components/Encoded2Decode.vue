@@ -1,29 +1,6 @@
-<template>
-  <div class="contents">
-    <!-- <form action="/generate" method="post" enctype="multipart/form-data" ref="form"> -->
-      <label v-on:removeImage="removeImage" v-show="!uploadedfile" class="input-item__label">STLファイルを選択
-        <input type="file" @change="uploadSTL" />
-      </label>
-    <!-- </form> -->
-    <!-- <PreviewImage :uploadedfile="this.uploadedfile" :imgName="this.imgName"></PreviewImage> -->
-  </div>
-</template>
-
 <script>
-// import PreviewImage from "../components/PreviewImage"
+// エンコードするやつ
 export default {
-  data() {
-    return {
-      uploadedfile: '',
-      imgName: '',
-      objText: ''
-    };
-  },
-  components: { 
-    // eslint-disable 
-    // PreviewImage,
-    // eslint-disable
-    },
   methods: {
     uploadSTL(e) {
       const files = e.target.files || e.dataTransfer.files;
@@ -56,11 +33,27 @@ export default {
       localStorage.setItem('type', file.type);
       
     },
-    removeImage() {
-      console.log("start")
-      // false
-      this.uploadedfile = false;
+  }
+}
+</script>
+<script>
+// デコードするやつ
+    // この変数にアップロードファイルの情報を復元することにする
+    let file = null
+    // この変数にアップロードファイルをデータURI化した情報を復元することにする
+    let uri  = localStorage.getItem('uri');
+    // デコードするためにbytesを呼ぶ
+    // バイナリに変換
+    let binary = window.atob( uri.split( "," )[1] ) ;
+    let bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) {
+        bytes[i] = binary.charCodeAt(i)
     }
-  },
-};
+
+    // let bytes =localStorage.getItem('bytes')
+    file = new Blob([bytes], {
+        type: localStorage.getItem('type'),
+    })
+    file.name = localStorage.getItem('name')
+    console.log(file);
 </script>

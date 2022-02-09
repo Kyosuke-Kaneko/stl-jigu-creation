@@ -135,24 +135,7 @@ export default {
     // this.init();
     console.log(this.scene);
     // this.animate();
-    // この変数にアップロードファイルの情報を復元することにする
-    let file = null
-    // この変数にアップロードファイルをデータURI化した情報を復元することにする
-    let uri  = localStorage.getItem('uri')
-    console.log(uri);
-    // アップロードファイルを復元する。
-    let binary = atob(
-        uri.slice(value.answer.file.indexOf(',') + 1) 
-    )
-    let bytes = new Uint8Array(binary.length)
-    for (let i = 0; i < binary.length; i++) {
-        bytes[i] = binary.charCodeAt(i)
-    }
-    file = new Blob([bytes], {
-        type: localStorage.getItem('type'),
-    })
-    console.log(file);
-    file.name = localStorage.getItem('name')
+    
   },
   computed: {
     getSTL() {
