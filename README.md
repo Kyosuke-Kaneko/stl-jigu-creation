@@ -10,35 +10,43 @@
 ## 環境構築
 ```
 yarn install
+or
+npm install
 ```
 
 ### ローカルサーバーの立ち上げ
 ```
 yarn serve
+or
+npm run  serve
 ```
 
 ### ビルド
 ```
 yarn build
+or 
+npm run build
 ```
 ## 各ファイル・パスの説明
-### トップページ<br>
+試しながら実装したのでファイル、パス名がぐちゃぐちゃなのはご了承ください。
+
+### トップページ(Home.vue)
 パス
 ```
 /
 ```
 デフォルトのままです。
 
-### sampleページ
+### sampleページ(ThreeSample.vue)
 パス
 ```
 /sample
 ```
 最初にVueで生成するThree.jsとしてサンプルの検証をしてました。<br>
-参考サイト↓
+参考サイト↓<br>
 [https://codesandbox.io/s/9y3n2r8wv4?file=/src/components/TheCanvas.vue](https://codesandbox.io/s/9y3n2r8wv4?file=/src/components/TheCanvas.vue)
 
-### aboutページ
+### aboutページ(About.vue)
 パス
 ```
 /about
@@ -46,9 +54,28 @@ yarn build
 
 `STLThree.vue` というコンポーネントを読み込んでます。<br>
 `public` フォルダに配置した `stl` ファイルを読み込んで検証してました。
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### fileページ(FileLoad.vue)
+パス
+```
+/file
+```
+
+ファイルのアップロードとプレビュー機能を実装しようとしました。<br>
+結局うまくいかなかったので、見る意味はないです。
+
+### stlページ(STLCanvas.vue)
+```
+/stl
+```
+
+inputタグからファイルのアップロードを行えるようにしました。<br>
+まだ、Three.jsの細かな設定、リファクタリング（ファイル分散）、バリデーション等はまだ行っていないのでまた後日行おうと思います。
+
 
 ### その他参考サイト
 [https://sbcode.net/threejs/loaders-stl/](https://sbcode.net/threejs/loaders-stl/)
 [https://gupuru.hatenablog.jp/entry/2013/12/25/214357](https://gupuru.hatenablog.jp/entry/2013/12/25/214357)
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
