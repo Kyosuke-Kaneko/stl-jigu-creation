@@ -1,6 +1,6 @@
-<img src="https://img.shields.io/badge/Javascript-276DC3.svg?logo=javascript&style=plastic">
-<img src="https://img.shields.io/badge/-Vue.js-4FC08D.svg?logo=vue.js&style=plastic">
-<img src="https://img.shields.io/badge/-Three.js-000000.svg?logo=three.js&style=plastic">
+<div style="display:flex">
+  <img src="https://img.shields.io/badge/Javascript-276DC3.svg?logo=javascript&style=plastic"><img src="https://img.shields.io/badge/-Vue.js-4FC08D.svg?logo=vue.js&style=plastic"><img src="https://img.shields.io/badge/-Three.js-000000.svg?logo=three.js&style=plastic">
+</div>
 
 
 # stl-jigu-creation
@@ -54,6 +54,7 @@ npm run build
 
 `STLThree.vue` というコンポーネントを読み込んでます。<br>
 `public` フォルダに配置した `stl` ファイルを読み込んで検証してました。
+（stlファイルはgitignoreに指定しているのでご自身で配置してください。）
 
 ### fileページ(FileLoad.vue)
 パス
