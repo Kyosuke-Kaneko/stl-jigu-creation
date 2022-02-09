@@ -1,6 +1,10 @@
 <template>
   <div id="container">
     <p>STLCanvas</p>
+    <label>
+      <input type="file" name="files[]" ref="file_input" @change="sendSTL" multiple>
+      <!-- <span>ファイルを選択</span> -->
+    </label>
   </div>
 </template>
 
@@ -8,8 +12,10 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { STLLoader } from "three/examples/jsm/loaders/STLLoader";
-// const STL = 'Sample01_ServoHorn01.stl'
-// const STL = 'Sample01_ServoHorn01.stl'
+// const STL =  localStorage.getItem('blobUri');
+// console.log(STL);
+// const STL = require('../assets/logo.png')
+// const STL = require('@/assets/materials/Helix-Test-Cube.stl')
 
   // console.log(uploadedSTL);
 export default {
@@ -28,7 +34,7 @@ export default {
     };
   },
   methods: {
-    init: function () {
+    init(objText) {
       document.addEventListener("mousemove", this.onMouseMove);
       // window.addEventListener('resize', this.onWindowResize);
       this.mouse = new THREE.Vector2();
@@ -72,27 +78,15 @@ export default {
       light2.position.set(0, 300, 500);
       this.scene.add(light2);
 
-      this.stlLoad();
-        // 通常のマテリアル 
-        // ジオメトリの作成
-        // const geometry = new THREE.BoxGeometry(1, 1, 1)
-        // // マテリアルの作成
-        // const material = new THREE.MeshStandardMaterial({
-        //     side: THREE.FrontSide,
-        //     color: 'hsl(0, 100%, 50%)',
-        //     wireframe: false
-        // })
-        // // メッシュの作成
-        // const cube = new THREE.Mesh(geometry, material)
-        // cube.position.set(0.5, 0.5, 0.5);
-        // this.scene.add(cube)
+      this.stlLoad(objText);
+      this.animate();
     },
-    stlLoad: function () {
+    stlLoad(objText) {
       // STLファイル
       let loader = new STLLoader();
       let mesh = new THREE.Object3D();
       
-      loader.load(STL, (geometory) => {
+      loader.load(objText, (geometory) => {
         console.log(geometory);
         let material = new THREE.MeshLambertMaterial({
             color: 0xff5533,
@@ -110,17 +104,17 @@ export default {
       this.renderer.render(this.scene, this.camera);
       // this.onWindowResize();
     },
-    animate: function () {
+    animate() {
       requestAnimationFrame(this.animate);
       // カメラ調整
       // console.log(this.camera.position)
       this.renderer.render(this.scene, this.camera);
     },
-    onMouseMove: function (event) {
+    onMouseMove(event) {
       this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
       this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
     },
-    onWindowResize: function () {
+    onWindowResize() {
       console.log(this.scene);
       // レンダラーのサイズを調整する
       let width = window.innerWidth;
@@ -130,20 +124,31 @@ export default {
       this.camera.updateProjectionMatrix();
       this.renderer.render(this.scene, this.camera);
     },
+    sendSTL(e) {
+      const files = e.target.files[0] || e.dataTransfer.files[0];
+      console.log(files);
+      const reader = new FileReader();
+      reader.addEventListener("load", async () => {
+        const newObjText = reader.result;
+        console.log(newObjText);
+        const newBlob = new Blob([newObjText], {
+          type: "text/plan",
+        });
+        console.log(newBlob);
+        const objText = URL.createObjectURL(newBlob);
+        // console.log(objText);
+        await this.init(objText);
+      });
+      if (files) {
+        reader.readAsArrayBuffer(files);
+        console.log(files);
+      }
+    },
   },
   mounted() {
     // this.init();
     console.log(this.scene);
     // this.animate();
-    
   },
-  computed: {
-    getSTL() {
-      console.log(uploadedSTL);
-      STL = uploadedSTL;
-      // this.init();
-      return 
-    }
-  }
 };
 </script>

@@ -41,10 +41,10 @@ export default {
     // この変数にアップロードファイルの情報を復元することにする
     let file = null
     // この変数にアップロードファイルをデータURI化した情報を復元することにする
-    let uri  = localStorage.getItem('uri');
+    let dataUri  = localStorage.getItem('dataUri');
     // デコードするためにbytesを呼ぶ
     // バイナリに変換
-    let binary = window.atob( uri.split( "," )[1] ) ;
+    let binary = window.atob( dataUri.split( "," )[1] ) ;
     let bytes = new Uint8Array(binary.length);
     for (let i = 0; i < binary.length; i++) {
         bytes[i] = binary.charCodeAt(i)

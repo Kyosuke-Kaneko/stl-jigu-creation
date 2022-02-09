@@ -37,16 +37,19 @@ export default {
       const reader = new FileReader();
       reader.onload = e => {
         const newObj = reader.result;
+        console.log(newObj);
         // ファイルのデータURI
         this.uploadedfile = e.target.result;
-        localStorage.setItem('uri',  this.uploadedfile);
+        // console.log(this.uploadedfile)
+        localStorage.setItem('dataUri',  this.uploadedfile);
         // localStorage.setItem('bytes',bytes);
         const newBlob = new Blob([newObj], {
               type: "text/plan",
         });
-        // 引数のオブジェクトからURLを作成。DOM（this.uploadedfile = e.target.result）と結びつく
+        // クライアント(ブラウザ) のメモリに保存された blobに アクセス可能な一意のURLを生成。DOM（this.uploadedfile = e.target.result）と結びつく
         this.objText = URL.createObjectURL(newBlob);
-        console.log(file)
+        localStorage.setItem('blobUri',  this.objText);
+        // console.log(this.objText)
         // ページ遷移
         // this.$router.push({name: 'STLCanvas'});
       };
