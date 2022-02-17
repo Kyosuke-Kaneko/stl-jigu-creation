@@ -47,6 +47,10 @@ export class ThreeConfig {
     this.controls.minDistance = 0.1;
     this.controls.maxDistance = 5000;
 
+    // 軸
+    const axes = new THREE.AxesHelper(100);
+    this.scene.add(axes);
+
     // ライトの作成
     const light = new THREE.AmbientLight(0x404040, 0.5); // soft white light
     this.scene.add(light);
