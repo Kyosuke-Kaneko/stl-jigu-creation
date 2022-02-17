@@ -12,34 +12,42 @@ export class ThreeConfig {
     // カメラを作成
     this.camera = new THREE.PerspectiveCamera(
       45,
-      this.container.clientWidth / this.container.clientHeight,
-      0.1,
-      10000
+      window.innerWidth / window.innerHeight,
+      1,
+      1000
     );
+    // this.scene.add(this.camera);
+    // 初期位置
     this.camera.position.z = 10;
     this.camera.position.x = 10;
     this.camera.position.y = 10;
 
     // レンダラーを作成
     this.renderer = new THREE.WebGLRenderer({
+      // canvasの指定
       canvas: canvas,
       alpha: true,
       antialias: true,
       preserveDrawingBuffer: true,
     });
     this.renderer.setSize(
+      // window.innerWidth , window.innerHeight
       this.container.clientWidth,
       this.container.clientHeight
     );
+    // MEMO:37~40調査
     this.renderer.setPixelRatio(this.container.devicePixelRatio);
     // buildアニメーションに必要
     this.renderer.localClippingEnabled = true;
 
     // コントローラー
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+    // this.controls.update();
+    // MEMO:45~46調査
     this.controls.minDistance = 0.1;
     this.controls.maxDistance = 5000;
 
+    // ライトの作成
     const light = new THREE.AmbientLight(0x404040, 0.5); // soft white light
     this.scene.add(light);
 

@@ -13,6 +13,8 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { STLLoader } from "three/examples/jsm/loaders/STLLoader";
+import { sceneManagerDesign } from "./sceneManager/index";
+
 
 export default {
   name: "STLCanvas",
@@ -135,7 +137,8 @@ export default {
         // 作成したBlobオブジェクトを参照するためのURlを作成
         const objText = URL.createObjectURL(newBlob);
         // console.log(objText);
-        await this.init(objText);
+        // await this.init(objText);
+        await sceneManagerDesign(objText);
       });
       if (files) {
         reader.readAsArrayBuffer(files);

@@ -7,7 +7,7 @@ import { ThreeConfig } from "./molecules/threeConfig";
 export const sceneManagerDesign = async (obj) => {
   const container = document.getElementById("container");
   const canvas = document.getElementById("threeCanvas");
-  // 基本設定
+  // 基本設定(シーン、カメラ、レンダラー、コントローラー、ライトの作成)
   const threeObj = await new ThreeConfig(container, canvas);
 
   // stl Loader
