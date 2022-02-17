@@ -27,6 +27,7 @@ export const stlLoader = async (threeObj, obj) => {
       // MEMO:調査
       const planeUniforms = { backTexture: { value: texBack } };
 
+      // シェイダーの設定（えらーがおきるのでコメントアウト）
       // material.onBeforeCompile = (shader) => {
       //   // @author prisoner849
       //   shader.uniforms.backTexture = planeUniforms.backTexture;

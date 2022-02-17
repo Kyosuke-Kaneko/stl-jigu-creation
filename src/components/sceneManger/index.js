@@ -1,6 +1,6 @@
 import { stlLoader } from "./molecules/loaders/stlLoader";
 import { animation } from "./molecules/animation";
-// import { canvasResize } from "./molecules/canvasResize";
+import { canvasResize } from "./molecules/canvasResize";
 import { ThreeConfig } from "./molecules/threeConfig";
 import { modelMethod } from "./molecules/modelMethod/index";
 
@@ -14,10 +14,11 @@ export const sceneManagerDesign = async (obj) => {
   const mesh = await stlLoader(threeObj, obj);
 
   // メソッド初期化（編集できるメソッドの追加）
+  // コメントアウトしてもOK
   modelMethod.init(mesh, threeObj);
 
   // resize
-  // canvasResize(threeObj);
+  canvasResize(threeObj);
 
   // アニメーション
   const anime = () => {
