@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { STLLoader } from "three/examples/jsm/loaders/STLLoader";
-// import { lookAtModel } from "./lookAtModel/lookAtModel";
+import { lookAtModel } from "./lookAtModel/lookAtModel";
 import purple from "../../../../assets/9d83bb.png";
 import red from "../../../../assets/ff0000.png";
 
@@ -73,9 +73,9 @@ export const stlLoader = async (threeObj, obj) => {
       threeObj.scene.add(box);
 
       // lookAtModel初期化
-      // lookAtModel.init(box);
+      lookAtModel.init(box);
       // モデルにカメラを向ける
-      // lookAtModel.default(threeObj);
+      lookAtModel.default(threeObj);
 
       resolve(mesh);
     });
