@@ -58,31 +58,31 @@ export class ThreeConfig {
     const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
     directionalLight.position.set(60, 60, 60);
     this.scene.add(directionalLight);
-    // const helper = new THREE.DirectionalLightHelper(directionalLight, 5);
-    // this.scene.add(helper);
+    const helper = new THREE.DirectionalLightHelper(directionalLight, 5);
+    this.scene.add(helper);
 
     const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.5);
     directionalLight2.position.set(-60, -60, -60);
     this.scene.add(directionalLight2);
-    // const helper2 = new THREE.DirectionalLightHelper(directionalLight2, 5);
-    // this.scene.add(helper2);
+    const helper2 = new THREE.DirectionalLightHelper(directionalLight2, 5);
+    this.scene.add(helper2);
 
     const directionalLight3 = new THREE.DirectionalLight(0xffffff, 0.5);
     directionalLight3.position.set(-60, 60, 60);
     this.scene.add(directionalLight3);
-    // const helper3 = new THREE.DirectionalLightHelper(directionalLight3, 5);
-    // this.scene.add(helper3);
+    const helper3 = new THREE.DirectionalLightHelper(directionalLight3, 5);
+    this.scene.add(helper3);
 
     const directionalLight4 = new THREE.DirectionalLight(0xffffff, 0.5);
     directionalLight4.position.set(60, -60, -60);
     this.scene.add(directionalLight4);
-    // const helper4 = new THREE.DirectionalLightHelper(directionalLight4, 5);
-    // this.scene.add(helper4);
+    const helper4 = new THREE.DirectionalLightHelper(directionalLight4, 5);
+    this.scene.add(helper4);
 
     const directionalLight5 = new THREE.DirectionalLight(0xffffff, 0.5);
     directionalLight5.position.set(0, 60, -60);
     this.scene.add(directionalLight5);
-    // const helper5 = new THREE.DirectionalLightHelper(directionalLight5, 5);
-    // this.scene.add(helper5);
+    const helper5 = new THREE.DirectionalLightHelper(directionalLight5, 5);
+    this.scene.add(helper5);
   }
 }

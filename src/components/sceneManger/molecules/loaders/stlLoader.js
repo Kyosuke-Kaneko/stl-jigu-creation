@@ -27,39 +27,39 @@ export const stlLoader = async (threeObj, obj) => {
       // MEMO:調査
       const planeUniforms = { backTexture: { value: texBack } };
 
-      material.onBeforeCompile = (shader) => {
-        // @author prisoner849
-        shader.uniforms.backTexture = planeUniforms.backTexture;
-        // 位置、色、テクスチャ座標などの属性を操作できますが、新しい頂点を生成することはできない。
-        shader.vertexShader =
-          `
-        attribute vec2 backUV;
-        varying vec2 vBackUV;
-        ` + shader.vertexShader;
-        shader.vertexShader = shader.vertexShader.replace(
-          `#include <fog_vertex>`,
-          `#include <fog_vertex>
-        vBackUV = backUV;
-        `
-        );
-        shader.fragmentShader =
-          `
-        uniform sampler2D backTexture;
-        varying vec2 vBackUV;
-        ` + shader.fragmentShader;
-        shader.fragmentShader = shader.fragmentShader.replace(
-          `#include <map_fragment>`,
-          `
-        #ifdef USE_MAP
+      // material.onBeforeCompile = (shader) => {
+      //   // @author prisoner849
+      //   shader.uniforms.backTexture = planeUniforms.backTexture;
+      //   // 位置、色、テクスチャ座標などの属性を操作できますが、新しい頂点を生成することはできない。
+      //   shader.vertexShader =
+      //     `
+      //   attribute vec2 backUV;
+      //   varying vec2 vBackUV;
+      //   ` + shader.vertexShader;
+      //   shader.vertexShader = shader.vertexShader.replace(
+      //     `#include <fog_vertex>`,
+      //     `#include <fog_vertex>
+      //   vBackUV = backUV;
+      //   `
+      //   );
+      //   shader.fragmentShader =
+      //     `
+      //   uniform sampler2D backTexture;
+      //   varying vec2 vBackUV;
+      //   ` + shader.fragmentShader;
+      //   shader.fragmentShader = shader.fragmentShader.replace(
+      //     `#include <map_fragment>`,
+      //     `
+      //   #ifdef USE_MAP
         
-        vec4 texelColor = gl_FrontFacing ? texture2D( map, vUv ) : texture2D( backTexture, vBackUV );
-        texelColor = mapTexelToLinear( texelColor );
-        diffuseColor *= texelColor;
+      //   vec4 texelColor = gl_FrontFacing ? texture2D( map, vUv ) : texture2D( backTexture, vBackUV );
+      //   texelColor = mapTexelToLinear( texelColor );
+      //   diffuseColor *= texelColor;
         
-        #endif
-        `
-        );
-      };
+      //   #endif
+      //   `
+      //   );
+      // };
 
       const mesh = new THREE.Mesh(geometory, material);
       mesh.name = "3dModel";

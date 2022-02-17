@@ -1,12 +1,12 @@
-import { changeColorModel } from "./methods/changeColorModel";
-import { screenShotModel } from "./methods/screenShotModel";
-import { build } from "./methods/build";
-import { edgeModel } from "./methods/edgeModel";
-import { supportModel } from "./methods/supportModel";
-import { holeModel } from "./methods/holeModel";
-import { lookAtModel } from "../loaders/lookAtModel/lookAtModel";
-import { visibilityModel } from "./methods/visibilityModel";
-import { jigModel } from "./methods/jigModel";
+// import { changeColorModel } from "./methods/changeColorModel";
+// import { screenShotModel } from "./methods/screenShotModel";
+// import { build } from "./methods/build";
+// import { edgeModel } from "./methods/edgeModel";
+// import { supportModel } from "./methods/supportModel";
+// import { holeModel } from "./methods/holeModel";
+// import { lookAtModel } from "../loaders/lookAtModel/lookAtModel";
+// import { visibilityModel } from "./methods/visibilityModel";
+// import { jigModel } from "./methods/jigModel";
 
 export const modelMethod = {
   mesh: null,

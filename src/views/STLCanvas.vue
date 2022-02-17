@@ -10,9 +10,6 @@
 </template>
 
 <script>
-// import * as THREE from "three";
-// import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-// import { STLLoader } from "three/examples/jsm/loaders/STLLoader";
 import { sceneManagerDesign } from "../components/sceneManger/index";
 
 
@@ -151,3 +148,13 @@ export default {
   },
 };
 </script>
+<style scoped>
+#continer {
+  width: 100vw;
+  height: 100vh;
+}
+#threeCanvas {
+  width: 100%;
+  height: 100%;
+}
+</style>
