@@ -65,7 +65,7 @@ export const stlLoader = async (threeObj, obj) => {
       const mesh = new THREE.Mesh(geometory, material);
       mesh.name = "3dModel";
       // モデル回転
-      mesh.rotation.set(-Math.PI / 2, 0, 0);
+      // mesh.rotation.set(-Math.PI / 2, 0, 0);
       threeObj.scene.add(mesh);
 
       // boundingBox視覚化させる。画像の中心を[0, 0, 0]と仮定したとき、画像がx, y, z軸方向にどれだけあるのか
