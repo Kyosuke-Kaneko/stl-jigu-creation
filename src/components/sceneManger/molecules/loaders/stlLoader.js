@@ -27,7 +27,7 @@ export const stlLoader = async (threeObj, obj) => {
       // MEMO:調査
       const planeUniforms = { backTexture: { value: texBack } };
 
-      // シェイダーの設定（えらーがおきるのでコメントアウト）
+      // シェイダーの設定（えらーがおきるのでコメントアウトしてもよい）
       material.onBeforeCompile = (shader) => {
         // @author prisoner849
         shader.uniforms.backTexture = planeUniforms.backTexture;
@@ -53,9 +53,10 @@ export const stlLoader = async (threeObj, obj) => {
           `
         #ifdef USE_MAP
         
-        vec4 texelColor = gl_FrontFacing ? texture2D( map, vUv ) : texture2D( backTexture, vBackUV );
-        texelColor = mapTexelToLinear( texelColor );
-        diffuseColor *= texelColor;
+        // えらーがおきるのでコメントアウト
+        // vec4 texelColor = gl_FrontFacing ? texture2D( map, vUv ) : texture2D( backTexture, vBackUV );
+        // texelColor = mapTexelToLinear( texelColor );
+        // diffuseColor *= texelColor;
         
         #endif
         `
@@ -64,11 +65,11 @@ export const stlLoader = async (threeObj, obj) => {
 
       const mesh = new THREE.Mesh(geometory, material);
       mesh.name = "3dModel";
-      // モデル回転
-      // mesh.rotation.set(-Math.PI / 2, 0, 0);
+      // モデルの初期位置
+      mesh.rotation.set(-Math.PI / 2, 0, 0);
       threeObj.scene.add(mesh);
 
-      // boundingBox視覚化させる。画像の中心を[0, 0, 0]と仮定したとき、画像がx, y, z軸方向にどれだけあるのか
+      // boundingBoxの視覚化。画像の中心を[0, 0, 0]と仮定したとき、画像がx, y, z軸方向にどれだけあるのか
       const box = new THREE.BoxHelper(mesh, 0xffff00);
       threeObj.scene.add(box);
 
