@@ -1,10 +1,13 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import purple from "../../../assets/9d83bb.png";
 
 export class ThreeConfig {
   constructor(container, canvas) {
     // シーン
     this.scene = new THREE.Scene();
+    // 背景色
+    this.scene.background = new THREE.TextureLoader().load(purple)
 
     // windowのsizeではなくcontainerにサイズを合わせる
     this.container = container;

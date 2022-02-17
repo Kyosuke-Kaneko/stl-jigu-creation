@@ -16,7 +16,7 @@ export const sceneManagerDesign = async (obj) => {
 
   // メソッド初期化（編集できるメソッドの追加）
   // コメントアウトしてもOK
-  modelMethod.init(mesh, threeObj);
+  // modelMethod.init(mesh, threeObj);
 
   // resize
   canvasResize(threeObj);
