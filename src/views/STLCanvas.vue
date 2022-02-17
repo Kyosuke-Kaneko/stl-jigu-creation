@@ -10,6 +10,7 @@
 </template>
 
 <script>
+// メソッドのインポート
 import { sceneManagerDesign } from "../components/sceneManger/index";
 
 

@@ -6,7 +6,7 @@ export class ThreeConfig {
     // シーン
     this.scene = new THREE.Scene();
 
-    // window sizeではなくcanvasContainerにサイズを合わせる
+    // windowのsizeではなくcontainerにサイズを合わせる
     this.container = container;
 
     // カメラを作成
@@ -35,15 +35,14 @@ export class ThreeConfig {
       this.container.clientWidth,
       this.container.clientHeight
     );
-    // MEMO:37~40調査
+    // レンダラーのサイズ調整
     this.renderer.setPixelRatio(this.container.devicePixelRatio);
-    // buildアニメーションに必要
+    // buildアニメーションに必要。クリッピングの描画。断面など
     this.renderer.localClippingEnabled = true;
 
     // コントローラー
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
-    // this.controls.update();
-    // MEMO:45~46調査
+    // PerspectiveCameraで有効どれくらいの距離までうごかせるか
     this.controls.minDistance = 0.1;
     this.controls.maxDistance = 5000;
 
