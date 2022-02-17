@@ -7,6 +7,7 @@ export const lookAtModel = {
 
   async default(threeObj) {
     // コントローラーのターゲットをboundingBox用ヘルパーにする
+    // モデルを取り囲む円の中心
     threeObj.controls.target.set(
       this.box.geometry.boundingSphere.center.x,
       this.box.geometry.boundingSphere.center.y,
