@@ -5,6 +5,7 @@
       <input type="file" name="files[]" ref="file_input" @change="sendSTL" multiple>
       <!-- <span>ファイルを選択</span> -->
     </label>
+    <canvas id="threeCanvas" class="my_canvas_design"></canvas>
   </div>
 </template>
 
@@ -120,22 +121,25 @@ export default {
     },
     sendSTL(e) {
       const files = e.target.files[0] || e.dataTransfer.files[0];
-      console.log(files);
+      // console.log(files);
       const reader = new FileReader();
       reader.addEventListener("load", async () => {
+        // ArrayBuffer バイト配列
         const newObjText = reader.result;
-        console.log(newObjText);
+        // console.log(newObjText);
+        // Blobオブジェクトに変換
         const newBlob = new Blob([newObjText], {
           type: "text/plan",
         });
         console.log(newBlob);
+        // 作成したBlobオブジェクトを参照するためのURlを作成
         const objText = URL.createObjectURL(newBlob);
         // console.log(objText);
         await this.init(objText);
       });
       if (files) {
         reader.readAsArrayBuffer(files);
-        console.log(files);
+        // console.log(files);
       }
     },
   },
