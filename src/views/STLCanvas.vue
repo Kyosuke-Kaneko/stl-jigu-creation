@@ -12,12 +12,7 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { STLLoader } from "three/examples/jsm/loaders/STLLoader";
-// const STL =  localStorage.getItem('blobUri');
-// console.log(STL);
-// const STL = require('../assets/logo.png')
-// const STL = require('@/assets/materials/Helix-Test-Cube.stl')
 
-  // console.log(uploadedSTL);
 export default {
   name: "STLCanvas",
   props: ['uploadedSTL'],
@@ -107,7 +102,6 @@ export default {
     animate() {
       requestAnimationFrame(this.animate);
       // カメラ調整
-      // console.log(this.camera.position)
       this.renderer.render(this.scene, this.camera);
     },
     onMouseMove(event) {
@@ -146,9 +140,7 @@ export default {
     },
   },
   mounted() {
-    // this.init();
     console.log(this.scene);
-    // this.animate();
   },
 };
 </script>
